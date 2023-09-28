@@ -1,4 +1,4 @@
-# QRCode Toolkit Node
+# Node QRCode Toolkit
 A cli app to generate QR Code according to the configs of [Anthony's QRCode Toolkit](https://github.com/antfu/qrcode-toolkit).  
 
 ## Build
