@@ -4,8 +4,6 @@ A toolkit mainly for AI-Generated QR Codes, with the ability to generate base QR
 
 👋 Walkthrough Guide - [Refining AI Generated QR Code](https://antfu.me/posts/ai-qrcode-refine)
 
-📸 Go to the App - [qrcode.antfu.me](https://qrcode.antfu.me)
-
 ## License
 
 MIT
