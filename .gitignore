@@ -8,3 +8,4 @@ dist
 .DS_Store
 build
 config.json
+qr_code.png
