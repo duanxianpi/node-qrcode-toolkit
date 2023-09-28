@@ -8,6 +8,8 @@ import { createCanvas , DOMMatrix, Image} from 'canvas'
 import { resolveMargin } from './utils'
 import { writeFileSync } from 'fs'
 import path from 'path'
+import os from 'os'
+const homeDirectory = os.homedir();
 
 interface MarkerInfo {
   x: number
@@ -28,7 +30,7 @@ interface PixelInfo {
   marker?: MarkerInfo
 }
 
-export async function generateQRCode(state: QRCodeGeneratorState, output_path:string) {
+export async function generateQRCode(state: QRCodeGeneratorState, output_path:string, filename:string) {
 
   const qr = createQrInstance(state)
 
@@ -773,7 +775,7 @@ export async function generateQRCode(state: QRCodeGeneratorState, output_path:st
   realCtx.restore()
 
   const buffer = outCanvas.toBuffer("image/png");
-  writeFileSync(path.resolve(output_path,"./qr_code.png"), buffer);
+  writeFileSync(path.join(untildify(output_path),filename+".png"), buffer);
 
   async function applyPerspective() {
     if (state.transformPerspectiveX === 0 && state.transformPerspectiveY === 0)
@@ -890,4 +892,12 @@ function pointToLineProjection(px: number, py: number, x1: number, y1: number, x
   const x = x1 + u * dx
   const y = y1 + u * dy
   return [x, y] as const
+}
+
+function untildify(pathWithTilde:string) :string {
+	if (typeof pathWithTilde !== 'string') {
+		throw new TypeError(`Expected a string, got ${typeof pathWithTilde}`);
+	}
+
+	return homeDirectory ? pathWithTilde.replace(/^~(?=$|\/|\\)/, homeDirectory) : pathWithTilde;
 }

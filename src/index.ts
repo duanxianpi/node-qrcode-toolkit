@@ -5,9 +5,10 @@ import * as path from 'path';
 import { program } from 'commander'
 
 program
-  .option('-t, --input <string>', "Input text to be encoded to qrcode, it will override the text in the config file")
+  .option('-i, --input <string>', "Input text to be encoded to qrcode, it will override the text in the config file")
   .requiredOption('-c, --config <string>', "Config to control the style of qr code")
-  .option('-o, --output_path <string>', "the output path of result image, defualt value is current directory");
+  .option('-o, --output_path <string>', "the output path of result image, defualt value is current directory")
+  .option('-n, --filename <string>', "the filename result image (no extension result will be in png), defualt value is qrcode");
 
 program.parse();
 
@@ -32,5 +33,7 @@ function readState() {
   return state
 }
 
-generateQRCode(readState(), options.output_path !== undefined ? options.output_path : ".")
+generateQRCode(readState(), 
+              options.output_path !== undefined ? options.output_path : ".",
+              options.filename !== undefined ? options.filename : "qrcode")
 
