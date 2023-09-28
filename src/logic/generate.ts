@@ -7,6 +7,7 @@ import { effects } from './effects'
 import { createCanvas , DOMMatrix, Image} from 'canvas'
 import { resolveMargin } from './utils'
 import { writeFileSync } from 'fs'
+import path from 'path'
 
 interface MarkerInfo {
   x: number
@@ -27,7 +28,7 @@ interface PixelInfo {
   marker?: MarkerInfo
 }
 
-export async function generateQRCode(state: QRCodeGeneratorState) {
+export async function generateQRCode(state: QRCodeGeneratorState, output_path:string) {
 
   const qr = createQrInstance(state)
 
@@ -772,7 +773,7 @@ export async function generateQRCode(state: QRCodeGeneratorState) {
   realCtx.restore()
 
   const buffer = outCanvas.toBuffer("image/png");
-  writeFileSync("./image.png", buffer);
+  writeFileSync(path.resolve(output_path,"./qr_code.png"), buffer);
 
   async function applyPerspective() {
     if (state.transformPerspectiveX === 0 && state.transformPerspectiveY === 0)

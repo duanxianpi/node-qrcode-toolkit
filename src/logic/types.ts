@@ -1,3 +1,5 @@
+import { ImageData, GlobalCompositeOperation } from "canvas"
+
 export const PixelStyles = [
     'square',
     'rounded',
