@@ -19,7 +19,9 @@ $ node build/index.js -h
 Usage: index [options]
 
 Options:
-  -t, --input <string>        Input text to be encoded to qrcode, it will override the text in the config file
+  -i, --input <string>        Input text to be encoded to qrcode, it will override the text in the config file
   -c, --config <string>       Config to control the style of qr code
   -o, --output_path <string>  the output path of result image, defualt value is current directory
+  -n, --filename <string>     the filename result image, defualt value is qrcode
+  -h, --help                  display help for command
 ```
