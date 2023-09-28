@@ -1,9 +1,25 @@
-# Anthony's QR Toolkit Node
+# QRCode Toolkit Node
+A cli app to generate QR Code according to the configs of [Anthony's QRCode Toolkit](https://github.com/antfu/qrcode-toolkit).  
 
-A toolkit mainly for AI-Generated QR Codes, with the ability to generate base QR codes, and compare with the output to find misaligned pixels.
+## Build
+```bash
+git https://github.com/duanxianpi/qrcode-toolkit-node
+npm install
+tsc --build
+```
 
-👋 Walkthrough Guide - [Refining AI Generated QR Code](https://antfu.me/posts/ai-qrcode-refine)
+## Usage
+### Step 1.
+Customize the qr code style from [Anthony's QRCode Toolkit](https://qrcode.antfu.me/), download the config
+![image](https://github.com/duanxianpi/qrcode-toolkit-node/assets/97914968/81c290e8-3f1a-420d-84f5-e41fa6be2272)
 
-## License
+### Step 2.
+```text
+$ node build/index.js -h
+Usage: index [options]
 
-MIT
+Options:
+  -t, --input <string>        Input text to be encoded to qrcode, it will override the text in the config file
+  -c, --config <string>       Config to control the style of qr code
+  -o, --output_path <string>  the output path of result image, defualt value is current directory
+```
